@@ -28,9 +28,9 @@
 
 	</insert>
 
-	<insert id="deleteById">
-
-	</insert>
+	<delete id="deleteById">
+	DELETE FROM player WHERE id = #{id}
+	</delete>
 
 
 </mapper>

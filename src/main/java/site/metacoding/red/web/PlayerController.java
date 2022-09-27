@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,6 +44,12 @@ public class PlayerController {
 	public @ResponseBody CMRespDto<?> insert(@RequestBody PlayerInsertReqDto playerInsertReqDto){
 		playerService.선수등록(playerInsertReqDto);
 		return new CMRespDto<>(1, "선수등록성공", null);
+	}
+	
+	@DeleteMapping("/player/{id}")
+	public @ResponseBody CMRespDto<?> delete(@PathVariable Integer id){
+		playerService.선수삭제(id);
+		return new CMRespDto<>(1, "선수 삭제 성공", null);
 	}
 }
 

@@ -26,12 +26,27 @@
 					<td>${player.name}</td>
 					<td>${player.position}</td>
 					<td>${player.createdAt}</td>
-					<td><button class="btn btn-danger">삭제</button></td>
+					<td><button onclick="btndelete(${player.id});" class="btn btn-danger">삭제</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 </div>
+<script>
+function btndelete(id){
+	$.ajax("/player/"+id,{
+		type: "DELETE",
+		dataType: "json",
+	}).done((res)=>{
+		if(res.code == 1){ // 성공
+			alert("선수 삭제 성공");
+			location.reload();
+		}else{ // 실패
+			alert("선수 삭제 실패하였습니다.");
+		}
+	});
+}
+</script>
 
 <%@ include file="../layout/footer.jsp"%>
 

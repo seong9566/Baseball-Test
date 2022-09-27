@@ -22,4 +22,8 @@ public class PlayerService {
 	public void 선수등록(PlayerInsertReqDto playerInertReqDto) {
 		playerDao.insert(playerInertReqDto.toEntity());
 	}
+	
+	public void 선수삭제(Integer id) {
+		playerDao.deleteById(id);
+	}
 }
