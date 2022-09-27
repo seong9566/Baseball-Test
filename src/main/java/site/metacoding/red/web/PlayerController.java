@@ -18,6 +18,7 @@ import site.metacoding.red.service.PlayerService;
 import site.metacoding.red.service.TeamService;
 import site.metacoding.red.web.dto.CMRespDto;
 import site.metacoding.red.web.dto.player.PlayerInsertReqDto;
+import site.metacoding.red.web.dto.player.PositionListDto;
 
 @RequiredArgsConstructor
 @Controller
@@ -50,6 +51,13 @@ public class PlayerController {
 	public @ResponseBody CMRespDto<?> delete(@PathVariable Integer id){
 		playerService.선수삭제(id);
 		return new CMRespDto<>(1, "선수 삭제 성공", null);
+	}
+	
+	@GetMapping("/positionList")
+	public String positionList(Model model) {
+		List<PositionListDto> positionList = playerService.포지션별선수목록보기();
+		model.addAttribute("positionList", positionList);
+		return "player/positionList";
 	}
 }
 

@@ -5,7 +5,8 @@
 <mapper namespace="site.metacoding.red.domain.player.PlayerDao">
 
 	<insert id="insert">
-		INSERT INTO player(name, position, team_id, is_outer, created_at) 
+		INSERT INTO player(name, position, team_id, is_outer,
+		created_at)
 		VALUES(#{name}, #{position}, #{teamId}, 0,NOW());
 	</insert>
 
@@ -29,8 +30,17 @@
 	</insert>
 
 	<delete id="deleteById">
-	DELETE FROM player WHERE id = #{id}
+		DELETE FROM player WHERE id = #{id}
 	</delete>
+	<select id="findAllPevot" resultType="site.metacoding.red.web.dto.player.PositionListDto">
+		SELECT t.name teamName,
+		if(p.position="1루수",p.name,"") luso,
+		if(p.position="외야수",p.name,"") yaso,
+		if(p.position="투수",p.name,"") tooso
+		FROM player p
+		INNER JOIN team t
+		ON p.team_id = t.id
+	</select>
 
 
 </mapper>

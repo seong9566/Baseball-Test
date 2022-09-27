@@ -8,17 +8,21 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>번호</th>
-				<th>칼럼1</th>
-				<th>칼럼2</th>
+				<th>팀이름</th>
+				<th>1루수</th>
+				<th>외야수</th>
+				<th>투수</th>
 			</tr>
 		</thead>
 		<tbody>
+		<c:forEach var="position" items="${positionList}">
 			<tr>
-				<td>1</td>
-				<td>내용1</td>
-				<td>내용2</td>
+				<td>${position.teamName}</td>
+				<td>${position.luso}</td>
+				<td>${position.yaso}</td>
+				<td>${position.tooso}</td>
 			</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 </div>
