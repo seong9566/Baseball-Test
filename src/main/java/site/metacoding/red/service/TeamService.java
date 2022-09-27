@@ -22,4 +22,8 @@ public class TeamService {
 	public void 팀등록(TeamInsertReqDto teamInertReqDto) {
 		teamDao.insert(teamInertReqDto.toEntity());
 	}
+	
+	public void 팀삭제(Integer id) {
+		teamDao.deleteById(id);
+	}
 }

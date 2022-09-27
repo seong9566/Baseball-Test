@@ -26,9 +26,9 @@
 
 	</insert>
 
-	<insert id="deleteById">
-
-	</insert>
+	<delete id="deleteById">
+	DELETE FROM team WHERE id = #{id}
+	</delete>
 
 
 </mapper>
